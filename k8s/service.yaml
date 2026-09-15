@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-petclinic
+  labels:
+    app: spring-petclinic
+spec:
+  # ClusterIP by default -- no AWS Load Balancer cost. Switch to
+  # LoadBalancer if you want a real public URL to demo; that
+  # provisions an ELB (~$16-25/mo if left running).
+  type: ClusterIP
+  selector:
+    app: spring-petclinic
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
